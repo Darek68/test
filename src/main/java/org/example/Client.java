@@ -1,9 +1,9 @@
 package org.example;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+//
+//import jakarta.persistence.Column;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
@@ -26,6 +26,10 @@ public class Client {
 
     public Client(String imie) {
         this.id = UUID.randomUUID();
-        this.name = name;
+        this.name = imie;
+    }
+
+    public String getName() {
+        return name;
     }
 }

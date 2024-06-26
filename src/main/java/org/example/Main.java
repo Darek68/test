@@ -18,16 +18,17 @@ public class Main {
     public static void persistDemo() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SingleUnit");
         EntityManager entityManager = emf.createEntityManager();
-        Client client = new Client("Imie");
-
+        Client client2 = new Client("Imie");
+        System.out.println(client2.getId() + "  " + client2.getName());
         EntityTransaction transaction = entityManager.getTransaction();
 //        Выполняется открытие транзакции
         transaction.begin();
 //        Объект помещается в Persistence Context - INSERT не выполняется
-        entityManager.persist(client);
+      //  entityManager.persist(client);
+        entityManager.persist(client2);
 //        Объект (тот же самый) возвращается из Persistent Context - SELECT не выполняется
       //  Client clientFromContext = entityManager.find(Client.class, client.getId());
-        Client clientFromContext = entityManager.find(Client.class, client.getId());
+        Client clientFromContext = entityManager.find(Client.class, client2.getId());
 //        Выполняется коммит транзакции - выполняется INSERT
         transaction.commit();
         entityManager.close();
